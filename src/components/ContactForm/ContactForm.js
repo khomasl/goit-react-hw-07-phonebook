@@ -1,5 +1,8 @@
 import { useState, useCallback } from 'react'
-import { useAddNewContactMutation } from '../../redux/contacts/contactsSlice'
+import {
+  useGetContactsQuery,
+  useAddNewContactMutation,
+} from '../../redux/contacts/contactsSlice'
 import { v4 as uuid } from 'uuid'
 import s from './ContactForm.module.css'
 
@@ -10,7 +13,13 @@ export default function ContactForm() {
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
 
+  const { data } = useGetContactsQuery()
   const [addNewContact] = useAddNewContactMutation()
+
+  const findContact = (contacts, name) => {
+    const normName = name.toLowerCase()
+    return contacts.find((contact) => contact.name.toLowerCase() === normName)
+  }
 
   const handleChange = useCallback(
     (e) => {
@@ -23,7 +32,9 @@ export default function ContactForm() {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault()
-      addNewContact({ name, number })
+      !findContact(data, name)
+        ? addNewContact({ name, number })
+        : alert(`${name} is already in contact`)
       setName('')
       setNumber('')
     },

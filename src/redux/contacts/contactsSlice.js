@@ -4,11 +4,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const BASE_CONTACTS_URL = 'https://61a0fd716c3b400017e69b4d.mockapi.io/api/v1/'
 const contacts_endpoint = 'contacts/'
 
-// const findContact = (contacts, name) => {
-//   const normName = name.toLowerCase()
-//   return contacts.find((contact) => contact.name.toLowerCase() === normName)
-// }
-
 export const contactsApi = createApi({
   tagTypes: ['Contacts'],
   reducerPath: 'contactsApi',
@@ -32,7 +27,6 @@ export const contactsApi = createApi({
         method: 'POST',
         url: contacts_endpoint,
         body: contact,
-        // body: !findContact(api.getState(), contact.name) ? contact : null,
       }),
       invalidatesTags: ['Contacts'],
     }),

@@ -11,15 +11,3 @@ const filterReducer = combineReducers({
 })
 
 export default filterReducer
-
-// const findContact = (contacts, name) => {
-//   const normName = name.toLowerCase()
-//   return contacts.find((contact) => contact.name.toLowerCase() === normName)
-// }
-
-// const itemsReducer = createReducer([], {
-//   [addNewContact]: (state, { payload }) =>
-//     !findContact(state, payload.name)
-//       ? [...state, payload]
-//       : alert(`${payload} is already in contact`),
-// })
