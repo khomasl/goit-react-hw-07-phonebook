@@ -1,0 +1,14 @@
+.form {
+  display: inline-grid;
+  width: inherit;
+  padding: 15px;
+  border-style: groove;
+  border-radius: 3%;
+}
+
+.btnForm {
+  padding: 3px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: lightskyblue;
+}
